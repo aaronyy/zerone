@@ -8,6 +8,8 @@
   --mist: #d6e9ff;
   --slate: #5b636d;
   --white: #ffffff;
+  --red: #e71015;
+  --red-dark: #70020f;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
   --serif: Georgia, "Times New Roman", serif;
@@ -103,7 +105,7 @@ textarea {
 }
 
 .nav-cta:hover {
-  background: var(--blue) !important;
+  background: var(--red) !important;
   transform: scale(1.03);
 }
 
@@ -112,25 +114,33 @@ textarea {
   min-height: 100svh;
   overflow: hidden;
   color: var(--white);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 400px);
+  grid-template-areas:
+    "copy stack"
+    "kicker stack";
+  align-content: center;
+  column-gap: 4rem;
+  row-gap: 1.5rem;
+  padding: 9rem 7vw 5rem;
   background:
-    radial-gradient(circle at 78% 30%, rgba(131, 199, 216, 0.22), transparent 42%),
-    linear-gradient(160deg, var(--ink) 0%, var(--blue) 68%, var(--blue-2) 100%);
+    linear-gradient(160deg, rgba(12, 15, 20, 0.92) 0%, rgba(24, 78, 119, 0.78) 62%, rgba(25, 83, 128, 0.6) 100%),
+    url("../assets/img/office.jpg") center / cover no-repeat;
 }
 
 .hero-copy {
-  position: relative;
-  z-index: 2;
-  padding: 22vh 7vw 0;
-  max-width: 18ch;
+  grid-area: copy;
+  min-width: 0;
 }
 
 .hero h1 {
   margin: 0 0 1.6rem;
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(2.6rem, 6.4vw, 5.6rem);
-  line-height: 0.98;
+  font-size: clamp(2.4rem, 5.6vw, 5.2rem);
+  line-height: 1;
   letter-spacing: -0.035em;
+  overflow-wrap: break-word;
   animation: heroIn 1.4s var(--ease-out) both;
 }
 
@@ -142,25 +152,22 @@ textarea {
 }
 
 .hero-kicker {
-  position: absolute;
-  right: 7vw;
-  bottom: 24%;
-  z-index: 2;
+  grid-area: kicker;
+  margin: 0;
   font-size: 16px;
   font-weight: 500;
-  max-width: 22ch;
-  text-align: right;
+  color: var(--mist);
 }
 
 .activity-stack {
-  position: absolute;
-  left: 6vw;
-  bottom: 16%;
-  z-index: 3;
-  width: min(400px, 88vw);
+  grid-area: stack;
+  align-self: end;
+  display: grid;
+  width: 100%;
 }
 
 .activity-card {
+  grid-area: 1 / 1;
   background: rgba(255, 255, 255, 0.96);
   color: var(--ink);
   border-radius: 16px;
@@ -168,13 +175,10 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
   animation: rise 7.5s infinite;
   opacity: 0;
-}
-
-.activity-card + .activity-card {
-  margin-top: -8px;
 }
 
 .activity-card:nth-child(1) { animation-delay: 0s; }
@@ -184,13 +188,15 @@ textarea {
 .activity-card strong {
   font-size: 16px;
   font-weight: 560;
+  min-width: 0;
 }
 
 .check {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--blue);
+  flex: 0 0 auto;
+  background: var(--red);
   color: var(--white);
   display: grid;
   place-items: center;
@@ -218,9 +224,12 @@ textarea {
 }
 
 .ticker-label {
+  position: relative;
+  z-index: 2;
   flex: 0 0 auto;
-  background: var(--sky);
-  color: var(--ink);
+  white-space: nowrap;
+  background: var(--red);
+  color: var(--white);
   display: grid;
   place-items: center;
   padding: 0 24px;
@@ -229,6 +238,8 @@ textarea {
 }
 
 .ticker-track {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 48px;
@@ -278,13 +289,13 @@ textarea {
   letter-spacing: 0.08em;
   font-size: 12px;
   font-weight: 600;
-  color: var(--slate);
+  color: var(--red);
   margin: 0 0 0.8rem;
 }
 
 .section.ink .kicker,
 .section.blue .kicker {
-  color: var(--sky);
+  color: var(--white);
 }
 
 .lede {
@@ -306,13 +317,13 @@ textarea {
 }
 
 .stat strong {
+  color: var(--red);
   display: block;
   font-family: var(--serif);
   font-size: clamp(2.8rem, 6vw, 4.6rem);
   font-weight: 400;
   letter-spacing: -0.04em;
   line-height: 0.9;
-  color: var(--blue);
 }
 
 .stat p {
@@ -389,7 +400,7 @@ textarea {
 .role {
   font-size: 13px;
   font-weight: 600;
-  color: var(--blue);
+  color: var(--red);
   margin-bottom: 0.7rem;
 }
 
@@ -463,7 +474,7 @@ textarea {
   content: "";
   display: block;
   height: 100%;
-  background: var(--sky);
+  background: var(--red);
   animation: autoplay-progress 6s linear infinite;
 }
 
@@ -543,8 +554,8 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--sky);
-  color: var(--ink);
+  background: var(--red);
+  color: var(--white);
   border: 0;
   border-radius: 12px;
   padding: 14px 22px;
@@ -556,7 +567,7 @@ textarea {
 .btn:hover,
 .btn-lime:hover {
   transform: scale(1.04);
-  background: #6fb8cc;
+  background: var(--red-dark);
 }
 
 .btn-dark {
@@ -565,7 +576,7 @@ textarea {
 }
 
 .btn-dark:hover {
-  background: var(--blue);
+  background: var(--red);
 }
 
 .footer {
@@ -611,8 +622,8 @@ textarea {
   border-radius: 18px;
   min-height: 180px;
   background:
-    radial-gradient(circle at 30% 40%, var(--sky), transparent 45%),
-    linear-gradient(160deg, var(--blue), var(--ink));
+    linear-gradient(160deg, rgba(24, 78, 119, 0.35), rgba(12, 15, 20, 0.55)),
+    url("../assets/img/consult-room.jpg") center / cover no-repeat;
 }
 
 .legal {
@@ -692,7 +703,7 @@ textarea {
 
 .notice {
   display: none;
-  color: var(--blue);
+  color: var(--red-dark);
   font-weight: 600;
 }
 
@@ -729,11 +740,23 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .hero-kicker {
-    left: 7vw;
-    right: auto;
-    bottom: 30%;
-    text-align: left;
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "copy"
+      "kicker"
+      "stack";
+    padding: 7.5rem 6vw 3rem;
+    row-gap: 1.5rem;
+  }
+
+  .activity-stack {
+    align-self: start;
+  }
+
+  .ticker-label {
+    padding: 0 14px;
+    font-size: 13px;
   }
 
   .site-nav .nav-link:not(.nav-cta) {
@@ -757,5 +780,66 @@ textarea {
     opacity: 1;
     transform: none;
     clip-path: none;
+  }
+}
+
+/* Deck photography */
+.photo {
+  margin: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--mist);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: var(--ar, 4 / 3);
+}
+
+.photo figcaption {
+  padding: 0.8rem 1rem;
+  font-size: 13px;
+  color: var(--slate);
+  background: var(--white);
+}
+
+.photo.portrait img { --ar: 3 / 4; }
+.photo.wide img { --ar: 16 / 9; }
+
+.split.flip {
+  grid-template-columns: 0.95fr 1.05fr;
+}
+
+.split.center {
+  align-items: center;
+}
+
+.quote-band.has-img {
+  background:
+    linear-gradient(90deg, rgba(12, 15, 20, 0.92) 0%, rgba(12, 15, 20, 0.78) 55%, rgba(24, 78, 119, 0.55) 100%),
+    url("../assets/img/case-event.jpg") center / cover no-repeat;
+}
+
+.founder-card {
+  display: grid;
+  grid-template-columns: minmax(220px, 340px) 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.work-card .photo {
+  margin-bottom: 1rem;
+  border-radius: 16px;
+}
+
+.work-card .photo img { --ar: 4 / 5; object-position: center top; }
+
+@media (max-width: 900px) {
+  .split.flip,
+  .founder-card {
+    grid-template-columns: 1fr;
   }
 }
