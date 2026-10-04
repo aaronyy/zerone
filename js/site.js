@@ -1,11 +1,22 @@
 function nav() {
   return `
     <div class="topbar">
-      <a class="brand" href="index.html" aria-label="Zerone home">
-        <img src="assets/logo.svg" alt="" />
-        ZERONE
-      </a>
-      <a class="btn nav-talk" href="contact.html">Talk to Zerone</a>
+      <div class="nav-pill">
+        <a class="brand" href="index.html" aria-label="Zerone home">zerone</a>
+        <button class="menu-btn" type="button" data-menu>Menu</button>
+      </div>
+      <a class="btn" href="contact.html">Talk to Zerone</a>
+    </div>
+    <div class="overlay" id="menu">
+      <div class="overlay-top">
+        <a class="brand" href="index.html">zerone</a>
+        <button class="menu-btn" type="button" data-menu>Close</button>
+      </div>
+      <a href="about.html">About</a>
+      <a href="refer.html">Refer</a>
+      <a href="faq.html">FAQ</a>
+      <a href="join.html">Join us</a>
+      <a href="contact.html">Talk to Zerone</a>
     </div>
   `;
 }
@@ -14,11 +25,8 @@ function footer() {
   return `
     <footer class="footer">
       <div>
-        <div class="row">
-          <a href="terms.html">Terms</a>
-          <a href="privacy.html">Privacy Policy</a>
-        </div>
-        <a href="index.html" class="brand" style="margin-top:18px"><img src="assets/logo.svg" alt="" /> ZERONE</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy Policy</a>
       </div>
       <div>
         <a href="about.html">About</a>
@@ -28,7 +36,6 @@ function footer() {
       <div>
         <a href="join.html">Join us</a>
         <a href="contact.html">Talk to Zerone</a>
-        <p style="color:#5b6470;margin-top:1rem">Healthcare Brand & Patient Experience Consultancy<br>Ho Chi Minh City</p>
       </div>
     </footer>
   `;
@@ -66,6 +73,11 @@ function mountChrome() {
   const bottom = document.getElementById("chrome-bottom");
   if (top) top.innerHTML = nav();
   if (bottom) bottom.innerHTML = footer();
+  document.querySelectorAll("[data-menu]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.getElementById("menu")?.classList.toggle("open");
+    });
+  });
 }
 
 function renderFaq() {
@@ -102,25 +114,8 @@ function bindForms() {
   });
 }
 
-function reveal() {
-  const els = document.querySelectorAll(".person, .step, .quote, .chapter, .big-quote, .faq-item");
-  els.forEach((el) => el.classList.add("reveal"));
-  const io = new IntersectionObserver(
-    (entries) =>
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("in");
-          io.unobserve(e.target);
-        }
-      }),
-    { threshold: 0.12 }
-  );
-  els.forEach((el) => io.observe(el));
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   mountChrome();
   renderFaq();
   bindForms();
-  reveal();
 });
