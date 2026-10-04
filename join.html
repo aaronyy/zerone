@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Join us — Zerone</title>
+    <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/site.css" />
+  </head>
+  <body>
+    <div id="chrome-top"></div>
+    <main class="wrap page-hero">
+      <h1>Join us</h1>
+      <div class="prose">
+        <p>Zerone is founder-led. Specialist teams are selected, contracted and led per project: brand design, patient experience, spatial design, content, research, production.</p>
+        <p>If you work at that standard in healthcare, send a note.</p>
+      </div>
+      <form class="form" data-signup="join" style="margin-top: 1.5rem">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <select name="craft" required>
+          <option value="" disabled selected>Craft</option>
+          <option>Brand design</option>
+          <option>Patient experience</option>
+          <option>Spatial design</option>
+          <option>Content</option>
+          <option>Research</option>
+          <option>Production</option>
+        </select>
+        <textarea name="note" rows="4" placeholder="A few lines on recent work"></textarea>
+        <button class="btn" type="submit">Send</button>
+      </form>
+      <p class="notice" data-notice="join">Thank you. We will read this.</p>
+    </main>
+    <div id="chrome-bottom"></div>
+    <script src="js/site.js"></script>
+  </body>
+</html>
