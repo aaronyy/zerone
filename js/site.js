@@ -1,49 +1,47 @@
 const tickerItems = [
-  "Confirmed 42 appointments",
-  "Posted $12,430 in payments",
-  "Booked 8 hygiene recalls",
-  "Rescheduled 3 appointments",
-  "Called Cigna for claim status",
-  "Completed Humana enrollment",
-  "Closed the books for March",
+  "Research",
+  "Positioning",
+  "Proposition",
+  "Brand narrative",
+  "Clinic identity",
+  "Patient journey",
+  "Service principles",
+  "Touchpoints",
+  "Specialist team leadership",
+  "Quality review",
 ];
 
 const faqs = [
   [
-    "What can Zerone help me with?",
-    "Zerone takes on the admin that keeps a practice moving: enrollments, posting, reconciliation, appeals, reporting, and follow-up.",
+    "Who does Zerone work with?",
+    "Doctors building a name, founders opening a new clinic, and business owners whose existing clinic needs a stronger brand and patient experience.",
   ],
   [
-    "How do I get started?",
-    "Book a demo. We'll look at how your office runs today, then show where Zerone can take work off your plate.",
+    "Why does brand matter for a clinic?",
+    "Patients can choose from many qualified doctors and clinics. Clinical expertise earns trust in the doctor. A clear position, a recognisable brand and a consistent experience build trust beyond the individual.",
   ],
   [
-    "Do I need to change my existing systems?",
-    "No. Zerone is built to sit alongside the way your practice already runs. On the first call we confirm your setup and what we can automate.",
+    "How does an engagement work?",
+    "Four steps: diagnose the business and the problem, define strategy and priorities, create the brand and experience system, then deliver with a specialist team under one accountable lead.",
   ],
   [
-    "What does my team still handle?",
-    "Your team stays in control. Zerone does the repetitive admin and flags exceptions when something needs a person.",
+    "Do you offer training?",
+    "Yes. Positioning, communication and reputation workshops for professionals, and patient experience and frontline training for clinic teams. Delivered within projects or standalone.",
   ],
   [
-    "How long does onboarding take?",
-    "If you already receive electronic payments, most offices are live in one to two weeks. If you still get paper checks, full auto-posting can take up to about eight weeks.",
+    "What does it cost?",
+    "Scope is tailored to each engagement, so pricing is set after we understand your goals. Start a conversation and we'll take it from there.",
   ],
   [
-    "What does Zerone cost?",
-    "Zerone is paid when it does work for your office. Once we understand your volume and workflows, we'll show you pricing.",
-  ],
-  [
-    "Is Zerone secure?",
-    "Yes. Zerone is built for healthcare practices, signs HIPAA business associate agreements, and follows standard healthcare data-handling expectations. We share security details on the demo.",
+    "Where are you based?",
+    "Ho Chi Minh City, Vietnam.",
   ],
 ];
 
 function nav(active) {
   const links = [
-    ["stories.html", "Stories"],
-    ["company.html", "Company"],
-    ["login.html", "Login"],
+    ["work.html", "Case study"],
+    ["about.html", "About"],
   ];
   return `
     <nav class="site-nav" aria-label="Main navigation">
@@ -54,10 +52,10 @@ function nav(active) {
       ${links
         .map(
           ([href, label]) =>
-            `<a class="nav-link ${label === "Login" ? "nav-login" : ""} ${active === label ? "is-active" : ""}" href="${href}">${label}</a>`
+            `<a class="nav-link ${active === label ? "is-active" : ""}" href="${href}">${label}</a>`
         )
         .join("")}
-      <a class="nav-demo" href="demo.html">Demo</a>
+      <a class="nav-demo" href="contact.html">Contact</a>
     </nav>
   `;
 }
@@ -66,21 +64,19 @@ function footer() {
   return `
     <footer class="footer">
       <div>
-        <h3>AI that runs the doctor's office</h3>
-        <a class="btn-lime" href="demo.html">Get started</a>
+        <h3>Healthcare brand &amp; patient experience</h3>
+        <a class="btn-lime" href="contact.html">Start a conversation</a>
       </div>
       <div class="footer-cols">
         <div>
-          <b>Company</b>
-          <a href="demo.html">Get started</a>
-          <a href="mailto:hello@zerone.example">Call us</a>
-          <a href="company.html">Careers</a>
+          <b>Zerone</b>
+          <a href="about.html">About</a>
+          <a href="work.html">Case study</a>
+          <a href="contact.html">Contact</a>
         </div>
         <div>
-          <b>Socials</b>
-          <a href="#">Instagram</a>
-          <a href="#">X</a>
-          <a href="#">LinkedIn</a>
+          <b>Based in</b>
+          <a href="contact.html">Ho Chi Minh City, Vietnam</a>
         </div>
         <div>
           <b>Legal</b>
@@ -89,7 +85,7 @@ function footer() {
         </div>
       </div>
       <div class="footer-photo" role="img" aria-label="Yellow wildflowers"></div>
-      <p class="legal">© ${new Date().getFullYear()} Zerone. All rights reserved. Made for GitHub Pages.</p>
+      <p class="legal">© ${new Date().getFullYear()} Zerone. Healthcare Brand &amp; Patient Experience Consultancy.</p>
     </footer>
   `;
 }

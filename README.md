@@ -1,6 +1,6 @@
 # Zerone
 
-Static marketing site for Zerone, an AI that runs the doctor's office.
+Static website for Zerone, a healthcare brand and patient experience consultancy (Ho Chi Minh City).
 
 Visual language follows the structure of [lassie.ai](https://www.lassie.ai/) (cream canvas, serif headlines, lime CTAs, navy footer). Brand, photos, quotes, and legal copy are original. Lassie trademarks, video, and CDN assets are not used.
 
