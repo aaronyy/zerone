@@ -1,0 +1,5 @@
+.DS_Store
+.cursor/
+.pr-reviews/
+node_modules/
+.env*
