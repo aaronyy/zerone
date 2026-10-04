@@ -1,15 +1,17 @@
 :root {
   --cream: #f9f8f5;
-  --nav: #f4efe6;
-  --ink: #0b0b0b;
-  --navy: #0b1c3a;
-  --navy-2: #12284d;
-  --forest: #16362c;
-  --lime: #d8f34a;
-  --pink: #e8a4b4;
-  --sage: #7f9d8f;
-  --muted: #6b6b64;
-  --card: #f3eee6;
+  --nav: #ffffff;
+  --ink: #120c08;
+  --navy: #120c08;
+  --navy-2: #1e1610;
+  --forest: #120c08;
+  --lime: #ff740a;
+  --pink: #e3ddcf;
+  --sage: #666666;
+  --muted: #666666;
+  --card: rgba(227, 221, 207, 0.4);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
   --serif: "Fraunces", "Times New Roman", serif;
   --sans: "DM Sans", system-ui, sans-serif;
   --mono: "DM Mono", ui-monospace, monospace;
@@ -61,7 +63,7 @@ input {
   padding: 8px 8px 8px 16px;
   background: var(--nav);
   border-radius: 999px;
-  box-shadow: 0 8px 30px rgba(11, 28, 58, 0.08);
+  box-shadow: 0 8px 30px rgba(18, 12, 8, 0.08);
 }
 
 .brand {
@@ -187,7 +189,7 @@ input {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #1f7a4d;
+  background: #ff740a;
   color: #fff;
   display: grid;
   place-items: center;
@@ -214,7 +216,7 @@ input {
 .ticker-label {
   flex: 0 0 auto;
   background: var(--lime);
-  color: var(--ink);
+  color: #fff;
   display: grid;
   place-items: center;
   padding: 0 28px;
@@ -269,6 +271,7 @@ input {
 }
 
 .signup button {
+  color: #fff;
   margin: 6px;
   border: 0;
   border-radius: 999px;
@@ -392,8 +395,8 @@ input {
   font-weight: 600;
 }
 
-.pill.green { background: #d8f3df; color: #146b3a; }
-.pill.pink { background: var(--pink); color: #4a2430; }
+.pill.green { background: #e3ddcf; color: #120c08; }
+.pill.pink { background: #ff740a; color: #fff; }
 .pill.navy { background: var(--navy); color: #fff; }
 
 .testimonials {
@@ -564,6 +567,7 @@ input {
 }
 
 .btn-lime {
+  color: #fff !important;
   display: inline-flex;
   background: var(--lime);
   color: var(--ink);
@@ -573,7 +577,7 @@ input {
 }
 
 .footer {
-  background: var(--navy);
+  background: var(--ink);
   color: #e8e4db;
   display: grid;
   grid-template-columns: 1.2fr 1fr 1.4fr;
@@ -729,3 +733,29 @@ input {
     display: none;
   }
 }
+
+/* Motion: Lassie-style easing, hover and scroll reveal */
+.site-nav a.nav-link { transition: background-color 0.3s cubic-bezier(0, 0, 0.2, 1), color 0.15s var(--ease-ui); }
+.nav-demo { transition: background-color 0.3s cubic-bezier(0, 0, 0.2, 1), transform 0.2s cubic-bezier(0, 0, 0.2, 1); }
+.nav-demo:hover { background: var(--lime) !important; }
+.btn-lime, .signup button { transition: transform 0.2s cubic-bezier(0, 0, 0.2, 1), background-color 0.3s cubic-bezier(0, 0, 0.2, 1); }
+.btn-lime:hover, .signup button:hover { transform: scale(1.04); background: #e66500; }
+.signup { transition: border-color 0.2s var(--ease-ui); }
+.signup:focus-within { border-color: var(--ink); }
+.feature-visual, .tile, .work-card, .story-card { transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1); }
+.work-card:hover, .story-card:hover { transform: translateY(-6px); }
+.faq-item p { overflow: hidden; }
+.faq-item button span { transition: transform 0.2s var(--ease-ui); }
+.faq-item.open button span { transform: rotate(180deg); }
+.footer { clip-path: inset(0 0 0 0 round 28px 28px 0 0); }
+
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+.reveal.in { opacity: 1; transform: none; }
+.hero h1 { animation: heroIn 1.4s var(--ease-out) both; }
+@keyframes heroIn { from { opacity: 0; transform: translateY(48px); clip-path: inset(0 0 100% 0); } to { opacity: 1; transform: none; clip-path: inset(0); } }
+.testimonial.is-on { animation: fadeSlide 1s var(--ease-out); }
+@keyframes fadeSlide { from { opacity: 0; transform: scale(1.03); } to { opacity: 1; transform: none; } }
+.autoplay { position: absolute; left: 8vw; bottom: 8vh; height: 3px; width: 160px; background: rgba(255,255,255,.3); z-index: 3; }
+.autoplay::after { content: ""; display: block; height: 100%; background: #fff; animation: autoplay-progress 6s linear infinite; }
+@keyframes autoplay-progress { 0% { width: 0; } 100% { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .reveal, .hero h1, .activity-card, .ticker-track { animation: none; transition: none; opacity: 1; transform: none; } }

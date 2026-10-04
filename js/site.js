@@ -162,6 +162,7 @@ function testimonials() {
     slides.forEach((s, idx) => s.classList.toggle("is-on", idx === n));
   };
   show(0);
+  setInterval(() => { i = (i + 1) % slides.length; show(i); }, 6000);
   document.querySelector("[data-next]")?.addEventListener("click", () => {
     i = (i + 1) % slides.length;
     show(i);
@@ -181,4 +182,15 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTicker();
   renderFaq();
   testimonials();
+  reveal();
 });
+
+function reveal() {
+  const els = document.querySelectorAll(".feature, .work-card, .stat-block, .tile, .ui-card, .faq-item, .display, .cta-band h2, .story-card");
+  els.forEach((el) => el.classList.add("reveal"));
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
+    { threshold: 0.15 }
+  );
+  els.forEach((el) => io.observe(el));
+}
