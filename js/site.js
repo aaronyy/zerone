@@ -5,7 +5,7 @@ function nav() {
         <img src="assets/logo.svg" alt="" />
         ZERONE
       </a>
-      <a class="btn" href="contact.html">Talk to Zerone</a>
+      <a class="btn nav-talk" href="contact.html">Talk to Zerone</a>
     </div>
   `;
 }
