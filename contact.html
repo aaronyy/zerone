@@ -3,32 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Talk to Zerone</title>
+    <title>Contact — Zerone</title>
     <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Fraunces:opsz,wght@9..144,350&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/site.css" />
   </head>
-  <body>
+  <body data-page="Contact">
     <div id="chrome-top"></div>
-    <main class="wrap page-hero">
-      <h1>You don’t have to figure this out alone</h1>
-      <p class="prose">Zerone helps doctors, founders and healthcare businesses turn what they want to be known for into what people can actually see, feel and trust.</p>
-      <form class="form" data-signup="contact" style="margin-top: 1.5rem">
-        <input type="text" name="name" placeholder="Name" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <input type="tel" name="phone" placeholder="Phone / WhatsApp" />
-        <select name="intent" required>
-          <option value="" disabled selected>What are you trying to build?</option>
-          <option>A professional reputation</option>
-          <option>A new healthcare business</option>
-          <option>A stronger brand and patient experience</option>
-        </select>
-        <textarea name="note" rows="4" placeholder="A few lines on the clinic or practice"></textarea>
-        <button class="btn" type="submit">Talk to Zerone</button>
-      </form>
-      <p class="notice" data-notice="contact">Thank you. We will be in touch.</p>
+    <main class="form-page">
+      <div style="width: min(620px, 92vw); text-align: center">
+        <h1 class="display">Start a conversation.</h1>
+        <p>A professional reputation.<br />A new healthcare business.<br />A stronger brand and patient experience.</p>
+        <p style="color: var(--muted)">Ho Chi Minh City, Vietnam</p>
+        <!-- TODO: add real email, phone / WhatsApp from Zerone -->
+        <p style="color: var(--muted)">Email · Phone / WhatsApp: details coming soon.</p>
+      </div>
     </main>
     <div id="chrome-bottom"></div>
     <script src="js/site.js"></script>
