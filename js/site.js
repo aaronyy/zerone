@@ -40,8 +40,10 @@ const faqs = [
 
 function nav(active) {
   const links = [
+    ["approach.html", "Approach"],
     ["work.html", "Case study"],
     ["about.html", "About"],
+    ["faq.html", "FAQ"],
   ];
   return `
     <nav class="site-nav" aria-label="Main navigation">
@@ -55,7 +57,7 @@ function nav(active) {
             `<a class="nav-link ${active === label ? "is-active" : ""}" href="${href}">${label}</a>`
         )
         .join("")}
-      <a class="nav-demo" href="contact.html">Contact</a>
+      <a class="nav-cta" href="contact.html">Contact</a>
     </nav>
   `;
 }
@@ -64,39 +66,32 @@ function footer() {
   return `
     <footer class="footer">
       <div>
-        <h3>Healthcare brand &amp; patient experience</h3>
-        <a class="btn-lime" href="contact.html">Start a conversation</a>
+        <h3>Healthcare brand and patient experience</h3>
+        <a class="btn" href="contact.html">Start a conversation</a>
       </div>
       <div class="footer-cols">
         <div>
           <b>Zerone</b>
-          <a href="about.html">About</a>
+          <a href="approach.html">Approach</a>
           <a href="work.html">Case study</a>
+          <a href="about.html">About</a>
+          <a href="faq.html">FAQ</a>
           <a href="contact.html">Contact</a>
         </div>
         <div>
-          <b>Based in</b>
-          <a href="contact.html">Ho Chi Minh City, Vietnam</a>
-        </div>
-        <div>
-          <b>Legal</b>
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
+          <b>More</b>
+          <a href="join.html">Join us</a>
+          <a href="refer.html">Refer</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
         </div>
       </div>
-      <div class="footer-photo" role="img" aria-label="Yellow wildflowers"></div>
+      <div>
+        <div class="footer-photo" role="img" aria-label="Zerone blue field"></div>
+        <p style="margin: 12px 0 0; font-size: 14px">Ho Chi Minh City, Vietnam</p>
+      </div>
       <p class="legal">© ${new Date().getFullYear()} Zerone. Healthcare Brand &amp; Patient Experience Consultancy.</p>
     </footer>
-  `;
-}
-
-function signup(id) {
-  return `
-    <form class="signup" data-signup="${id}">
-      <input type="email" name="email" placeholder="Your email" required aria-label="Your email" />
-      <button type="submit">Get started</button>
-    </form>
-    <p class="notice" data-notice="${id}">Thanks. We'll be in touch.</p>
   `;
 }
 
@@ -107,7 +102,7 @@ function mountChrome(active) {
   if (bottom) bottom.innerHTML = footer();
 }
 
-function bindSignups() {
+function bindForms() {
   document.querySelectorAll("form[data-signup]").forEach((form) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -122,10 +117,9 @@ function bindSignups() {
 function renderTicker() {
   const el = document.getElementById("ticker-track");
   if (!el) return;
-  const items = [...tickerItems, ...tickerItems]
+  el.innerHTML = [...tickerItems, ...tickerItems]
     .map((t) => `<span>${t}</span>`)
     .join("");
-  el.innerHTML = items;
 }
 
 function renderFaq() {
@@ -150,43 +144,45 @@ function renderFaq() {
   });
 }
 
-function testimonials() {
-  const slides = [...document.querySelectorAll(".testimonial")];
+function quotes() {
+  const slides = [...document.querySelectorAll(".quote-slide")];
   if (!slides.length) return;
   let i = 0;
   const show = (n) => {
     slides.forEach((s, idx) => s.classList.toggle("is-on", idx === n));
   };
   show(0);
-  setInterval(() => { i = (i + 1) % slides.length; show(i); }, 6000);
-  document.querySelector("[data-next]")?.addEventListener("click", () => {
-    i = (i + 1) % slides.length;
-    show(i);
-  });
-  document.querySelector("[data-prev]")?.addEventListener("click", () => {
-    i = (i - 1 + slides.length) % slides.length;
-    show(i);
-  });
+  if (slides.length > 1) {
+    setInterval(() => {
+      i = (i + 1) % slides.length;
+      show(i);
+    }, 6000);
+  }
+}
+
+function reveal() {
+  const els = document.querySelectorAll(
+    ".card, .work-card, .cap, .stat, .split, .display, .story-card, .ui-card, .faq-item, .cta-band h2"
+  );
+  els.forEach((el) => el.classList.add("reveal"));
+  const io = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      }),
+    { threshold: 0.12 }
+  );
+  els.forEach((el) => io.observe(el));
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   mountChrome(document.body.dataset.page || "");
-  document.querySelectorAll("[data-mount-signup]").forEach((el) => {
-    el.innerHTML = signup(el.getAttribute("data-mount-signup"));
-  });
-  bindSignups();
+  bindForms();
   renderTicker();
   renderFaq();
-  testimonials();
+  quotes();
   reveal();
 });
-
-function reveal() {
-  const els = document.querySelectorAll(".feature, .work-card, .stat-block, .tile, .ui-card, .faq-item, .display, .cta-band h2, .story-card");
-  els.forEach((el) => el.classList.add("reveal"));
-  const io = new IntersectionObserver(
-    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
-    { threshold: 0.15 }
-  );
-  els.forEach((el) => io.observe(el));
-}

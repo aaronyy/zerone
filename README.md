@@ -1,14 +1,13 @@
 # Zerone
 
-Static website for Zerone, a healthcare brand and patient experience consultancy (Ho Chi Minh City).
+Static website for Zerone, a healthcare brand and patient experience consultancy in Ho Chi Minh City.
 
-Visual language follows the structure of [lassie.ai](https://www.lassie.ai/) (cream canvas, serif headlines, lime CTAs, navy footer). Brand, photos, quotes, and legal copy are original. Lassie trademarks, video, and CDN assets are not used.
+Layout and motion follow the page flow of [lassie.ai](https://www.lassie.ai/) and [hellohera.com](https://hellohera.com) (pill nav, full-bleed hero, ticker, numbered how-it-works, long case story, FAQ, closing CTA). Colors, type and copy come from the 2026 company credentials deck: ink `#0c0f14`, blue `#184e77`, sky `#83c7d8`, mist `#d6e9ff`, Georgia headlines, Be Vietnam Pro body.
+
+Lassie and Hera trademarks, video and CDN assets are not used. Contact email and phone are placeholders until provided.
 
 ## GitHub Pages
 
-This repo is plain HTML/CSS/JS at the root, so Pages can serve `/` from `main`.
+Plain HTML/CSS/JS at the root. Pages deploys from `.github/workflows/pages.yml` on `main`.
 
-After the repo exists:
-
-1. Settings → Pages → Source: GitHub Actions (workflow in `.github/workflows/pages.yml`), or Deploy from branch `main` / `/` (root).
-2. Site URL: `https://aaronyy.github.io/zerone/`
+Site: `https://thaongtr.github.io/zerone/`
