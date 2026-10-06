@@ -133,6 +133,7 @@ textarea {
   object-fit: cover;
   object-position: center center;
   z-index: 0;
+  filter: brightness(0.94) contrast(1.04) saturate(0.90);
 }
 
 .hero-video-overlay {
@@ -140,12 +141,13 @@ textarea {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    rgba(8, 20, 30, 0.68) 0%,
-    rgba(12, 38, 57, 0.48) 48%,
-    rgba(24, 78, 119, 0.28) 100%
-  );
+ background: linear-gradient(
+  90deg,
+  rgba(17, 20, 20, 0.46) 0%,
+  rgba(17, 20, 20, 0.24) 34%,
+  rgba(17, 20, 20, 0.06) 62%,
+  rgba(17, 20, 20, 0.00) 100%
+);
 }
 
 .hero-copy,
