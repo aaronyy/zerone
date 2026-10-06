@@ -85,31 +85,20 @@
       <p class="kicker">Trust Translation™</p>
       <h2 class="display">From Provider Value to Patient Choice</h2>
       <p class="lede">Trust Translation™ connects healthcare expertise with the brand patients see, the care teams deliver and the choices patients make.</p>
-      <div class="work-grid four" style="margin-top: 2rem">
-        <article class="work-card">
-          <div class="num">01</div>
-          <h3>Provider Value</h3>
-          <p>Clinical expertise · Distinctive care approach</p>
-          <p class="src">Strategic input</p>
-        </article>
-        <article class="work-card">
-          <div class="num">02</div>
-          <h3>Brand Signal</h3>
-          <p>Positioning · Profile · Identity · Content</p>
-          <p class="src">Patient understanding</p>
-        </article>
-        <article class="work-card">
-          <div class="num">03</div>
-          <h3>Care Proof</h3>
-          <p>Priority interactions · Team training</p>
-          <p class="src">Team capability</p>
-        </article>
-        <article class="work-card">
-          <div class="num">04</div>
-          <h3>Patient Choice</h3>
-          <p>Recognise · Trust · Choose</p>
-          <p class="src">Business signal</p>
-        </article>
+      <div class="tt-field" id="tt-field" aria-label="Trust Translation framework">
+        <svg class="tt-signals" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+          <path pathLength="1" d="M500 300 C440 230 380 130 300 85"></path>
+          <path pathLength="1" d="M500 300 C580 240 640 170 695 130"></path>
+          <path pathLength="1" d="M500 300 C440 390 390 480 325 535"></path>
+          <path pathLength="1" d="M500 300 C570 380 630 470 690 517"></path>
+          <circle cx="300" cy="85" r="4"></circle><circle cx="695" cy="130" r="4"></circle>
+          <circle cx="325" cy="535" r="4"></circle><circle cx="690" cy="517" r="4"></circle>
+        </svg>
+        <div class="tt-core"><div><div class="tt-core-name">Trust<br />Translation™</div><span class="tt-core-by">Developed by Zerone</span></div></div>
+        <article class="tt-node tt-n1"><span class="tt-num">01 / Input</span><h3>Provider Value</h3><p>Clinical expertise and a distinctive approach to care.</p></article>
+        <article class="tt-node tt-n2"><span class="tt-num">02 / Expression</span><h3>Brand Signal</h3><p>Positioning and communication patients can understand.</p></article>
+        <article class="tt-node tt-n3"><span class="tt-num">03 / Delivery</span><h3>Care Proof</h3><p>The experience delivered consistently by the team.</p></article>
+        <article class="tt-node tt-n4"><span class="tt-num">04 / Outcome</span><h3>Patient Choice</h3><p>Helping patients recognise, trust and choose.</p></article>
       </div>
       <p class="lede" style="margin-top: 1.5rem">The same framework guides brand strategy and staff training.</p>
       <p class="src">Possible indicators, selected for each engagement: patient understanding, relevant enquiries, team practice and appointment conversion.</p>
@@ -168,7 +157,7 @@
         </article>
         <article class="work-card">
           <div class="num">The strategic response</div>
-          <h3>“Vì Sức Khoẻ Tinh Thần Trẻ Em Việt Nam”</h3>
+          <h3 style="font-family: var(--sans); font-weight: 600; font-size: 1.15rem; line-height: 1.4">“Vì Sức Khoẻ Tinh Thần Trẻ Em Việt Nam”</h3>
           <p>A locally relevant awareness platform built around education, expert voices and trust, rather than leading with the treatment.</p>
         </article>
         <article class="work-card">
@@ -181,7 +170,7 @@
 
     <section class="quote-band has-img" aria-label="Case study">
       <article class="quote-slide is-on">
-        <p class="eyebrow">Selected case study · European Wellness, Vietnam</p>
+        <p class="eyebrow">What the client says</p>
         <p class="quote">
           “Working with Thao, I saw how her way of thinking brought clarity to a
           difficult healthcare challenge, and helped us find a direction that
@@ -235,5 +224,13 @@
 
     <div id="chrome-bottom"></div>
     <script src="js/site.js"></script>
+    <script>
+      (function () {
+        var el = document.getElementById("tt-field");
+        if (!el) return;
+        if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { el.classList.add("is-visible"); return; }
+        new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { el.classList.add("is-visible"); o.disconnect(); } }, { threshold: 0.25 }).observe(el);
+      })();
+    </script>
   </body>
 </html>
