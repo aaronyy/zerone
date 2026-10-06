@@ -18,7 +18,7 @@ const faqs = [
   ],
   [
     "Who does Zerone work with?",
-    "Doctors opening their own clinic and building their name, and owners whose established clinic needs a stronger brand and patient experience.",
+    "Doctors building a name, founders opening a new clinic, and business owners whose existing clinic needs a stronger brand and patient experience.",
   ],
   [
     "Why does brand matter for a clinic?",
@@ -45,7 +45,6 @@ const faqs = [
 function nav(active) {
   const links = [
     ["approach.html", "Approach"],
-    ["work.html", "Case study"],
     ["about.html", "About"],
     ["faq.html", "FAQ"],
   ];
