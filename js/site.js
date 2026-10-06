@@ -13,8 +13,12 @@ const tickerItems = [
 
 const faqs = [
   [
+    "What happens on the 30-minute call?",
+    "We talk through what you are trying to build and where you are today, and whether Zerone is the right fit. If it is, we agree the next step together.",
+  ],
+  [
     "Who does Zerone work with?",
-    "Doctors building a name, founders opening a new clinic, and business owners whose existing clinic needs a stronger brand and patient experience.",
+    "Doctors opening their own clinic and building their name, and owners whose established clinic needs a stronger brand and patient experience.",
   ],
   [
     "Why does brand matter for a clinic?",
@@ -30,7 +34,7 @@ const faqs = [
   ],
   [
     "What does it cost?",
-    "Scope is tailored to each engagement, so pricing is set after we understand your goals. Start a conversation and we'll take it from there.",
+    "Scope is tailored to each engagement, so pricing is set after we understand your goals. Book a 30-minute call and we'll take it from there.",
   ],
   [
     "Where are you based?",
